@@ -16,12 +16,13 @@ pesquisa.addEventListener('click', ()=>{
         let pesq_cep = JSON.parse(cep.responseText)
         console.log(pesq_cep)
 
-        if(pesq_cep.logradouro != ''){
+        if(pesq_cep.logradouro === undefined){
+            alert('Essa cidade não existe!!')
+        }else if(pesq_cep.logradouro != ''){
             cidade.setAttribute('value',pesq_cep.localidade);
             rua.setAttribute('value',pesq_cep.logradouro);
             bairro.setAttribute('value',pesq_cep.bairro);
             document.getElementById('estado').value = (pesq_cep.uf)
-
         }else{
             cidade.setAttribute('value',pesq_cep.localidade);
             document.getElementById('estado').value = (pesq_cep.uf)
